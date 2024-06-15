@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <link rel='stylesheet' href='home.css'>
+        <link rel="icon" href="images/bot-white.png">
+        <title>MAYA AI</title>
+    </head>
+<body>
+    <div class="flex">
+        <div class="intro">
+            <div class="intro_logo"><img src="images/bot.png">MAYA AI</div>
+            <div id="maya"><img src="images/MAYA.svg" ></div>
+            <div class="intro_suggestions">Generate an image of<br><span class="element"></span></div>
+        </div>
+        <div class="login">
+            <div class="flex_row">
+                <div class="login_flex">
+                    <div class="get_started">Get Started</div>
+                    <div class="flex_buttons">
+                        <a href="/login" id="login"><button>Log In</button></a>
+                        <a href="/signup" id="signup"><button>Sign Up</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex_row">
+                <div class="flex_column">
+                    <div class="openAI"><i class="fa-solid fa-globe"></i>MAYA AI</div>
+                    <div class="policy">
+                        <p><a href="/terms">Terms of Use</a> | <a href="/privacy">Privacy Policy</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://kit.fontawesome.com/22905693d1.js" crossorigin="anonymous"></script>
+    <script>
+        var typed = new Typed(".element", {
+          strings: [
+                "Sunset over mountains",
+                "Robot exploring a neon-lit futuristic cityscape",
+                "Ancient castle by the sea",
+                "Magical forest with fairies",
+                "Space station orbiting Earth",
+                "Dragon flying above clouds",
+                "Underwater coral reef",
+                "Tropical beach paradise",
+                "Medieval market square bustling with merchants",
+                "Fantasy warrior in battle",
+                "Astronaut on Mars",
+                "Snowy village in winter",
+                "Abstract geometric shapes",
+                "City skyline at dusk",
+                "Haunted house on a hill",
+                "Fairytale princess in a garden with blooming roses",
+                "Giant robot in a desert",
+                "Mystical mountain temple hidden in the clouds",
+                "Cute kitten playing with yarn"
+            ],
+          typeSpeed: 30,
+          backSpeed: 20,
+          loop:true
+        });
+    </script>
+</body>
+</html>

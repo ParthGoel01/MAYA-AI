@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="chat.css">
+    <link rel="icon" href="images/bot-white.png">
+    <title>MAYA AI</title>
+  </head>
+  <body>
+    <div id="root">
+        <div class="flex">
+            <!-- SIDEBAR -->
+            <div class='sidebar'>
+                <form action="/new_section" method="POST">
+                    <button class='sidebar__new-chat'>
+                        <div class='sidebar__new-chat_logo'>
+                            <img src="images/bot.png" id="sidebar__new-chat_logo-i">
+                            <p>New chat</p>
+                        </div>
+                        <div><i class="fa-solid fa-pen-to-square" id="sidebar__new-chat-i"></i></div>
+                    </button>
+                </form>
+                <div class='sidebar__chats'>
+                    <% if(locals.sections) { %>
+                        <% sections.forEach((section) => { %>
+                        <span class="sidebar__chats-span">
+                            <div class="chat_section">
+                                <form action="/chat" method="GET" class="get_section">
+                                    <button class="get_section_button">
+                                        <input type="hidden" name="section_id" value="<%= section.id %>">
+                                        <input type="text" class="sidebar__chat" disabled value="<%= section.name%>"></input>
+                                    </button>
+                                </form>
+                                <div id='<%=section.id%>' class="dropbtn"><i class="fa-solid fa-ellipsis"></i></div>
+                            </div>
+                            <div id='dropdown<%=section.id%>' class="dropdown-content">
+                                <form action="/rename_section" class="rename_form" method="POST">
+                                    <input type="hidden" name="section_id" value="<%= section.id %>"></input>
+                                    <input type="hidden" name="newname" value="" class="newname_hidden"></input>
+                                    <button class="rename"><i class="fa-solid fa-pen-to-square"></i>Rename</button>
+                                </form>
+                                <form action="/delete_section" class="delete_form" method="POST">
+                                    <input type="hidden" name="section_id" value="<%= section.id %>"></input>
+                                    <button class="delete"><i class="fa-solid fa-trash"></i>Delete</button>
+                                </form>
+                            </div>
+                        </span>    
+                        <% }) %>
+                    <% } %>
+                </div>
+                <div class='sidebar__footer'>
+                    <div class='sidebar__footer-plans'>
+                        <div><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <div>
+                            <div><h3>Upgrade Plan</h3></div>
+                            <div><p>Get MAYA Pro</p></div>
+                        </div>
+                    </div>
+                    <div class="logout_dropdown">
+                        <a href="/terms" id="logout">Terms of Use</a>
+                        <a href="/privacy" id="logout">Privacy Policy</a>
+                        <a href="/logout" id="logout">Logout</a>
+                    </div>
+                    <button class="logout_button"><div class='sidebar__footer-user'>
+                        <div class='sidebar__footer-user_logo'><%= (user.username.substring(0,2)).toUpperCase()  %></div>
+                        <div class='sidebar__footer-user_name'><%= (user.username).toUpperCase() %></div>    
+                    </div></button>
+                </div>
+            </div>
+            <div class="arrow"><div><i class="fa-solid fa-chevron-right"></i></div></div>
+            <!-- MAIN CONTENT -->
+            <div class="content">
+                <div class="content__logo">
+                    <div><img src="images/bot-white.png" id="content__logo-i"></div>
+                    <a href='/'>MAYA AI <span class="gray"> 1.0</span></a>
+                </div>
+                <div class="content__main">
+                    <div class="content__main-heading"><img src="images/bot.png">Transform your imagination into images. Where shall we begin?</div>
+                    <div class="content__messages">
+                        <% if(locals.length!==0) {%>
+                            <% messages.forEach(msg=>{ %>
+                                <div class="content__message-user">
+                                    <div class='message__header'>
+                                        <div class='message__header_logo'><%= (user.username.substring(0,2)).toUpperCase()  %></div>
+                                        <div class='message__header_name'><%= (user.username).toUpperCase() %></div>
+                                    </div>
+                                    <div class="message__text"><%=msg.message%></div>
+                                </div>
+                                <div class="content__message-ai">
+                                    <div class='message__header'>
+                                        <div class='message__header_logo'><img src="images/bot-white.png"></div>
+                                        <div class='message__header_name'>MAYA AI</div>
+                                    </div>
+                                    <div class="message__img"><img src='<%= msg.img_url %>' alt='<%= msg.message %>'></div>
+                                </div>
+                            <% }) %>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="content__footer">
+                    <div class="content__footer-grid">
+                        <div class="content__footer-grid_div">
+                            <div>
+                                <div class="content__footer-grid_div-1">A cabin among pine trees,</div>
+                                <div class="content__footer-grid_div-2">under a starlit sky.</div>
+                            </div>
+                            <div><i class="fa-solid fa-arrow-up"></i></div>
+                        </div>
+                        <div class="content__footer-grid_div">
+                            <div>
+                                <div class="content__footer-grid_div-1">A cityscape with neon lights,</div>
+                                <div class="content__footer-grid_div-2">Bustling with pedestrians.</div>
+                            </div>
+                            <div><i class="fa-solid fa-arrow-up"></i></div>
+                        </div>
+                        <div class="content__footer-grid_div">
+                            <div>
+                                <div class="content__footer-grid_div-1">A lighthouse on rugged cliff,</div>
+                                <div class="content__footer-grid_div-2">Its beacon piercing through the fog.</div>
+                            </div>
+                            <div><i class="fa-solid fa-arrow-up"></i></div>
+                        </div>
+                        <div class="content__footer-grid_div">
+                            <div>
+                                <div class="content__footer-grid_div-1">An forest of bioluminescent plants,</div>
+                                <div class="content__footer-grid_div-2">Illuminating a hidden pathway.</div>
+                            </div>
+                            <div><i class="fa-solid fa-arrow-up"></i></div>
+                        </div>
+                    </div>
+                    <div class="content__footer-input">
+                        <div class="content__footer-input_div">
+                            <form action="/message" method="POST" id="msg_form">
+                                <input type="hidden" name="section_id" value="<%= current_section.id %>">
+                                <input type="text" placeholder="Message MAYA AI..." name="message" id="msg_input">
+                                <i class="fa-solid fa-arrow-up" id="message_i"></i>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="content__footer-text">MAYA AI can make mistakes. Consider checking important information.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src='chat.js'></script>
+    <script src="https://kit.fontawesome.com/22905693d1.js" crossorigin="anonymous"></script>
+  </body>
+</html>
