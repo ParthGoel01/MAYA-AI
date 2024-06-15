@@ -11,7 +11,7 @@ import fetch from "node-fetch";
 import pg from 'pg';
 import favicon from 'serve-favicon';
 import cors from 'cors';
-import { join } from 'path';
+import path from 'path';
 
 env.config();
 const { Pool } = pg;
@@ -21,7 +21,7 @@ const hashPassword = util.promisify(bcrypt.hash);
 const port = process.env.PORT;
 const salt = parseInt(process.env.SALT);
 const __dirname = new URL('.', import.meta.url).pathname;
-app.use(favicon(join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 const db = new Pool({
   connectionString: process.env.POSTGRES_URL,
