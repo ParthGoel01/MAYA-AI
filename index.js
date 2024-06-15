@@ -241,7 +241,7 @@ passport.use('local', new Strategy( async function verify(username , password , 
 passport.use('google',new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "http://localhost:3000/auth/google/chat",
+  callbackURL: "https://maya-git-main-parth-goels-projects-8f8b2b89.vercel.app/auth/google/chat",
   userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
 }, async(accessToken, refreshToken , profile ,cb)=>{
     try{
