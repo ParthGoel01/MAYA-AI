@@ -40,7 +40,7 @@ input:focus {
     justify-content: space-between;
     width: 300px;
     max-width: 250px;
-    height: 100vh;
+    height: 100svh;
     color: var(--text-color);
     padding: 1rem;
     z-index: 10;
@@ -234,7 +234,7 @@ input:focus {
     align-items: center;
     justify-content: center;
     width: 35px;
-    height: 100vh;
+    height: 100svh;
 }
 .arrow div {
     background:none;
@@ -253,7 +253,7 @@ input:focus {
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--content-color);
-    height: 100vh;
+    height: 100svh;
     width: 100vw;
     padding: 1rem;
 }
